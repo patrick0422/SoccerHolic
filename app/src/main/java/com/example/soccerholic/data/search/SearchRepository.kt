@@ -1,6 +1,5 @@
 package com.example.soccerholic.data.search
 
-import com.example.soccerholic.data.temp.SearchResponse
 import retrofit2.Response
 import javax.inject.Inject
 

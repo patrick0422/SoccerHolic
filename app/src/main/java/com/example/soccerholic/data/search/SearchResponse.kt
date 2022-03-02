@@ -1,4 +1,4 @@
-package com.example.soccerholic.data.temp
+package com.example.soccerholic.data.search
 
 
 import com.google.gson.annotations.SerializedName
@@ -14,4 +14,16 @@ data class SearchResponse(
     val paging: Paging, // 페이지
     @SerializedName("response")
     val response: List<Response> // 검색 결과
+)
+
+data class Parameters(
+    @SerializedName("search")
+    val search: String
+)
+
+data class Paging(
+    @SerializedName("current")
+    val current: Int,
+    @SerializedName("total")
+    val total: Int
 )

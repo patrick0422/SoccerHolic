@@ -1,4 +1,4 @@
-package com.example.soccerholic.data.temp
+package com.example.soccerholic.data.team
 
 
 import com.google.gson.annotations.SerializedName

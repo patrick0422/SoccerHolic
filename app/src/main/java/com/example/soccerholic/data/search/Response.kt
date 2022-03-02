@@ -1,6 +1,8 @@
-package com.example.soccerholic.data.temp
+package com.example.soccerholic.data.search
 
 
+import com.example.soccerholic.data.team.Team
+import com.example.soccerholic.data.team.Venue
 import com.google.gson.annotations.SerializedName
 
 data class Response(
