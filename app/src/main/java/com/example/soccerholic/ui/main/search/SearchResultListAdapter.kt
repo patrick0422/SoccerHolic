@@ -2,27 +2,40 @@ package com.example.soccerholic.ui.main.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.soccerholic.R
+import com.example.soccerholic.data.search.SearchResponse
+import com.example.soccerholic.databinding.ItemSearchResultListBinding
 
 class SearchResultListAdapter : RecyclerView.Adapter<SearchResultViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultViewHolder {
-        TODO("Not yet implemented")
-    }
+    val searchResultList = listOf<SearchResponse>()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultViewHolder = SearchResultViewHolder.from(parent)
 
     override fun onBindViewHolder(holder: SearchResultViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.bind(searchResultList[position])
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount(): Int = searchResultList.size
 
 }
 
-class SearchResultViewHolder : RecyclerView.ViewHolder() {
+class SearchResultViewHolder(
+    private val binding: ItemSearchResultListBinding
+) : RecyclerView.ViewHolder(binding.root) {
     companion object {
-        fun from(parent: ViewGroup): SearchResultViewHolder {
-            LayoutInflater.from(parent.context).inflate(R.layout.)
-        }
+        fun from(parent: ViewGroup) = SearchResultViewHolder(
+            DataBindingUtil.inflate(
+                LayoutInflater.from(parent.context),
+                R.layout.item_search_result_list,
+                parent,
+                false
+            )
+        )
+    }
+
+    fun bind(searchResponse: SearchResponse) = with(binding) {
+        // TODO
     }
 }
