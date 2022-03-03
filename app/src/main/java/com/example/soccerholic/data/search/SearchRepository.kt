@@ -7,5 +7,6 @@ class SearchRepository @Inject constructor(
     private val searchApi: SearchApi
 ) {
     suspend fun searchTeams(query: String): Response<SearchResponse> = searchApi.searchTeams(query)
+    suspend fun searchTeamById(teamId: Int): Response<SearchResponse> = searchApi.searchTeamById(teamId)
 }
 

@@ -19,10 +19,29 @@ class SearchViewModel @Inject constructor(
     private val _searchResponse: MutableLiveData<NetworkResult<SearchResponse>> = MutableLiveData()
     val searchResponse: LiveData<NetworkResult<SearchResponse>> get() = _searchResponse
 
-    suspend fun searchTeamWithKeyWord(keyWord: String) = viewModelScope.launch {
+    private val _idSearchResponse: MutableLiveData<NetworkResult<SearchResponse>> = MutableLiveData()
+    val idSearchResponse: LiveData<NetworkResult<SearchResponse>> get() = _idSearchResponse
+
+    fun searchTeamWithKeyWord(keyWord: String) = viewModelScope.launch {
+        _searchResponse.value = NetworkResult.Loading()
         val response = searchRepository.searchTeams(keyWord)
 
         _searchResponse.value = try {
+            if (response.isSuccessful) {
+                NetworkResult.Success(response.body()!!)
+            } else {
+                NetworkResult.Error(response.message())
+            }
+        } catch (e: Exception) {
+            NetworkResult.Error(e.stackTraceToString())
+        }
+    }
+
+    fun searchTeamWithTeamId(teamId: Int) = viewModelScope.launch {
+        _idSearchResponse.value = NetworkResult.Loading()
+        val response = searchRepository.searchTeamById(teamId)
+
+        _idSearchResponse.value = try {
             if (response.isSuccessful) {
                 NetworkResult.Success(response.body()!!)
             } else {

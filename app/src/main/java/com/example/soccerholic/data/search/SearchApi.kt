@@ -5,6 +5,9 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface SearchApi {
-    @GET("/teams")
+    @GET("teams")
     suspend fun searchTeams(@Query("search") keyWord: String): Response<SearchResponse>
+
+    @GET("teams")
+    suspend fun searchTeamById(@Query("id") teamId: Int): Response<SearchResponse>
 }

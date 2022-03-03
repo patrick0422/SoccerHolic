@@ -1,7 +1,7 @@
 package com.example.soccerholic.util
 
 object Constants {
-    const val BASE_URL = "https://api-football-v1.p.rapidapi.com/v3"
+    const val BASE_URL = "https://api-football-v1.p.rapidapi.com/v3/"
     const val TAG = "SoccerHolicLogs"
 
     const val API_HOST = "api-football-v1.p.rapidapi.com"
