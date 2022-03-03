@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Coding/Android/SoccerHolic/app/src/main/res/drawable/ic_error_outline.xml" value="0.2905" />
         <entry key="..\:/Coding/Android/SoccerHolic/app/src/main/res/layout/activity_main.xml" value="0.30462962962962964" />
+        <entry key="..\:/Coding/Android/SoccerHolic/app/src/main/res/layout/fragment_detail.xml" value="0.4046296296296296" />
         <entry key="..\:/Coding/Android/SoccerHolic/app/src/main/res/layout/fragment_home.xml" value="0.425" />
-        <entry key="..\:/Coding/Android/SoccerHolic/app/src/main/res/layout/fragment_search.xml" value="0.425" />
+        <entry key="..\:/Coding/Android/SoccerHolic/app/src/main/res/layout/fragment_search.xml" value="0.4046296296296296" />
         <entry key="..\:/Coding/Android/SoccerHolic/app/src/main/res/layout/item_search_result_list.xml" value="0.425" />
         <entry key="..\:/Coding/Android/SoccerHolic/app/src/main/res/menu/menu_main_toolbar.xml" value="0.425" />
       </map>

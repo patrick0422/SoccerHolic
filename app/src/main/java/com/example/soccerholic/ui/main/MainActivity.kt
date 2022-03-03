@@ -3,7 +3,6 @@ package com.example.soccerholic.ui.main
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.SearchView
 import androidx.navigation.findNavController
 import com.example.soccerholic.R
 import com.example.soccerholic.base.BaseActivity
@@ -23,28 +22,30 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onBackPressed() {
         binding.toolbar.visibility = View.VISIBLE
 
-        if (!navController.popBackStack())
+        if (!navController.navigateUp())
             super.onBackPressed()
+
+//        if (!navController.popBackStack())
+//            super.onBackPressed()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main_toolbar, menu)
 
-
-
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
-        R.id.toolbar_search -> {
-            navController.navigate(R.id.action_homeFragment_to_searchFragment)
-            binding.toolbar.visibility = View.GONE
-            true
-        }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.toolbar_search -> {
+                navController.navigate(R.id.action_homeFragment_to_searchFragment)
+                binding.toolbar.visibility = View.GONE
+                true
+            }
 
-
-        else -> {
-            super.onOptionsItemSelected(item)
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
         }
     }
 }

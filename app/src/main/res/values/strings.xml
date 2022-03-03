@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">SoccerHolic</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search">Search</string>
+    <string name="no_search_result">검색 결과가 없습니다.</string>
+    <string name="search_result"><b>\'%1$s\'</b>에 대한 검색 결과 <b>%2$d</b>건</string>
+    <string name="loading">Loading</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.soccerholic.ui.main
+package com.example.soccerholic.ui.main.home
 
 import androidx.navigation.fragment.findNavController
 import com.example.soccerholic.R
