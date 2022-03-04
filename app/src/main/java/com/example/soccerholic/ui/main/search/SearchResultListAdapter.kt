@@ -19,9 +19,7 @@ class SearchResultListAdapter : RecyclerView.Adapter<SearchResultViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultViewHolder = SearchResultViewHolder.from(parent)
 
-    override fun onBindViewHolder(holder: SearchResultViewHolder, position: Int) {
-        holder.bind(searchResultList[position])
-    }
+    override fun onBindViewHolder(holder: SearchResultViewHolder, position: Int) = holder.bind(searchResultList[position])
 
     override fun getItemCount(): Int = searchResultList.size
 
@@ -58,7 +56,6 @@ class SearchResultViewHolder(
         teamCard.setOnClickListener {
             val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(response.team.id)
             it.findNavController().navigate(action)
-            Toast.makeText(binding.root.context, response.team.name, Toast.LENGTH_SHORT).show()
         }
     }
 }

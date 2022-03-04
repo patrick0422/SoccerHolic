@@ -23,12 +23,17 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(R.layout.fragment_det
             when (result) {
                 is NetworkResult.Success -> {
                     with (binding) {
-                        Glide
-                            .with(binding.root)
-                            .load(result.data!!.response[0].team.logo)
-                            .transition(DrawableTransitionOptions.withCrossFade())
-                            .into(imageLogo)
-                        textName.text = result.data.response[0].team.name
+                        result.data!!.response[0].let { response ->
+                            Glide
+                                .with(binding.root)
+                                .load(response.team.logo)
+                                .transition(DrawableTransitionOptions.withCrossFade())
+                                .into(imageLogo)
+                            textName.text = response.team.name
+                            textVenue.text = response.venue.name
+                            text2.text = response.team.country
+                            text3.text = "${response.team.founded}"
+                        }
                     }
                 }
                 is NetworkResult.Error -> {
