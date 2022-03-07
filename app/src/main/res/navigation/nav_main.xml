@@ -21,7 +21,9 @@
         tools:layout="@layout/fragment_search" >
         <action
             android:id="@+id/action_searchFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/zoom_in"
+            app:popExitAnim="@anim/zoom_out" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
