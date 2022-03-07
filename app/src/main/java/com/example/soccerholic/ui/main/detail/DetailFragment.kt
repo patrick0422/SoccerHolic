@@ -1,6 +1,9 @@
 package com.example.soccerholic.ui.main.detail
 
+import android.os.Build
+import android.text.Html
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -25,9 +28,11 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(R.layout.fragment_det
             when (result) {
                 is NetworkResult.Success -> {
                     setData(result.data!!.response[0])
+                    isLoading(false)
                 }
                 is NetworkResult.Error -> {
                     makeToast("Error: ${result.message}")
+                    isLoading(false)
                 }
                 is NetworkResult.Loading -> {
                     isLoading(true)
@@ -36,6 +41,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(R.layout.fragment_det
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun setData(response: Response) = with(binding) {
         Glide
             .with(binding.root)
@@ -45,9 +51,9 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(R.layout.fragment_det
 
         with(response) {
             textName.text = team.name
-            textVenue.text = getString(R.string.venue, venue.name)
-            textCountry.text = getString(R.string.country, team.country)
-            textFounded.text = getString(R.string.founded, team.founded)
+            textVenue.text = Html.fromHtml(getString(R.string.venue, venue.name), Html.FROM_HTML_MODE_LEGACY)
+            textCountry.text = Html.fromHtml(getString(R.string.country, team.country), Html.FROM_HTML_MODE_LEGACY)
+            textFounded.text = Html.fromHtml(getString(R.string.founded, team.founded), Html.FROM_HTML_MODE_LEGACY)
         }
     }
 

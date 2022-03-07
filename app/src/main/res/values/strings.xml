@@ -2,10 +2,11 @@
     <string name="app_name">SoccerHolic</string>
     <string name="search">Search</string>
     <string name="no_search_result">검색 결과가 없습니다.</string>
-    <string name="search_result"><b>\'%1$s\'</b>에 대한 검색 결과 <b>%2$d</b>건</string>
+    <string name="search_result">&lt;b>\'%1$s\'&lt;/b>에 대한 검색 결과 &lt;b>%2$d&lt;/b>건</string>
     <string name="loading">Loading</string>
-    <string name="founded"><b>Founded:</b> %1$d</string>
-    <string name="country"><b>Country:</b> %1$s</string>
-    <string name="venue"><b>Venue:</b> %1$s</string>
+    <string name="founded">&lt;b>Founded:&lt;/b> %1$d</string>
+    <string name="country">&lt;b>Country:&lt;/b> %1$s</string>
+    <string name="venue">&lt;b>Venue:&lt;/b> %1$s</string>
+    <string name="welcome_messages">Hello, %1$s! You have &lt;b>%2$d new messages&lt;/b>.</string>
 
 </resources>

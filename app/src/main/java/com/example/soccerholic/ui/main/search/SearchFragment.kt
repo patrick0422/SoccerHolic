@@ -1,5 +1,6 @@
 package com.example.soccerholic.ui.main.search
 
+import android.text.Html
 import android.view.View
 import android.widget.SearchView
 import androidx.fragment.app.viewModels
@@ -38,12 +39,14 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
                     isEmpty(result.data!!.response.isEmpty())
 
-                    binding.textResult.text = getString(
-                        R.string.search_result,
-                        result.data.parameters.search,
-                        result.data.response.size
+                    binding.textResult.text = Html.fromHtml(
+                        getString(
+                            R.string.search_result,
+                            result.data.parameters.search,
+                            result.data.response.size
+                        ),
+                        Html.FROM_HTML_MODE_LEGACY
                     )
-
                     resultListAdapter.setData(result.data.response)
                 }
                 is NetworkResult.Error -> {
