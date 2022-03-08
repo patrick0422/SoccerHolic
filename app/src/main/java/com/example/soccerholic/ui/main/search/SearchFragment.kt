@@ -37,17 +37,17 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
                 is NetworkResult.Success -> {
                     isLoading(false)
 
-                    isEmpty(result.data!!.response.isEmpty())
+                    isEmpty(result.data!!.teamResponse.isEmpty())
 
                     binding.textResult.text = Html.fromHtml(
                         getString(
                             R.string.search_result,
                             result.data.parameters.search,
-                            result.data.response.size
+                            result.data.teamResponse.size
                         ),
                         Html.FROM_HTML_MODE_LEGACY
                     )
-                    resultListAdapter.setData(result.data.response)
+                    resultListAdapter.setData(result.data.teamResponse)
                 }
                 is NetworkResult.Error -> {
                     isLoading(false)

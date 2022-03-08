@@ -1,6 +1,6 @@
 package com.example.soccerholic.di
 
-import com.example.soccerholic.data.search.SearchApi
+import com.example.soccerholic.data.api.SearchApi
 import com.example.soccerholic.util.Constants.API_HOST
 import com.example.soccerholic.util.Constants.API_KEY
 import com.example.soccerholic.util.Constants.BASE_URL

@@ -14,5 +14,5 @@ interface SearchApi {
     suspend fun searchTeamById(@Query("id") teamId: Int): Response<SearchResponse<TeamResponse>>
 
 //    @GET("players/squads")
-//    suspend fun searchPlayerSquadsByTeamId(@Query("team") teamId: Int): Response<SearchResponse<TeamResponse>>
+//    suspend fun searchPlayerSquadsByTeamId(@Query("team") teamId: Int): Response<SearchResponse<SquadResponse>>
 }

@@ -2,7 +2,6 @@ package com.example.soccerholic.ui.main.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
@@ -10,12 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.soccerholic.R
 import com.example.soccerholic.base.BaseDiffUtil
-import com.example.soccerholic.data.search.Response
-import com.example.soccerholic.data.search.SearchResponse
+import com.example.soccerholic.data.search.response.result.TeamResponse
 import com.example.soccerholic.databinding.ItemSearchResultListBinding
 
 class SearchResultListAdapter : RecyclerView.Adapter<SearchResultViewHolder>() {
-    var searchResultList = listOf<Response>()
+    var searchResultList = listOf<TeamResponse>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultViewHolder = SearchResultViewHolder.from(parent)
 
@@ -23,7 +21,7 @@ class SearchResultListAdapter : RecyclerView.Adapter<SearchResultViewHolder>() {
 
     override fun getItemCount(): Int = searchResultList.size
 
-    fun setData(newData: List<Response>) {
+    fun setData(newData: List<TeamResponse>) {
         val searchResultListDiffUtil = BaseDiffUtil(searchResultList, newData)
         val diffUtilResult = DiffUtil.calculateDiff(searchResultListDiffUtil)
 
@@ -46,15 +44,15 @@ class SearchResultViewHolder(
         )
     }
 
-    fun bind(response: Response) = with(binding) {
+    fun bind(teamResponse: TeamResponse) = with(binding) {
         Glide
             .with(binding.root)
-            .load(response.team.logo)
+            .load(teamResponse.team.logo)
             .into(teamImage)
-        teamName.text = response.team.name
+        teamName.text = teamResponse.team.name
 
         teamCard.setOnClickListener {
-            val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(response.team.id)
+            val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(teamResponse.team.id)
             it.findNavController().navigate(action)
         }
     }
