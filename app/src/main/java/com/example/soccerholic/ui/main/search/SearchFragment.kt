@@ -90,3 +90,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         }
     }
 }
+
+fun main() {
+    print(if(checkFormat("ASDFAS")) "굿" else "낫굿")
+}
+
+fun checkFormat(keyWord: String): Boolean = (!(keyWord.matches(Regex("[a-zA-Z0-9]"))))
