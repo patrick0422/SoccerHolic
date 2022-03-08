@@ -1,6 +1,7 @@
 package com.example.soccerholic.data.api
 
 import com.example.soccerholic.data.search.response.SearchResponse
+import com.example.soccerholic.data.search.response.result.SquadResponse
 import com.example.soccerholic.data.search.response.result.TeamResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -13,6 +14,6 @@ interface SearchApi {
     @GET("teams")
     suspend fun searchTeamById(@Query("id") teamId: Int): Response<SearchResponse<TeamResponse>>
 
-//    @GET("players/squads")
-//    suspend fun searchPlayerSquadsByTeamId(@Query("team") teamId: Int): Response<SearchResponse<SquadResponse>>
+    @GET("players/squads")
+    suspend fun searchSquadsByTeamId(@Query("team") teamId: Int): Response<SearchResponse<SquadResponse>>
 }

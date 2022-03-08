@@ -26,6 +26,11 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
     }
 
     fun searchTeamWithKeyWord(keyWord: String?): Boolean {
+        if (!(keyWord!!.matches(Regex("[a-zA-Z0-9]")))) {
+            makeToast("알파벳과 숫자만 입력 가능합니다")
+            return true
+        }
+
         if (keyWord!!.length < 3) {
             makeToast("3글자 이상 입력해 주세요")
             return true
