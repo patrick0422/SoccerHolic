@@ -7,7 +7,6 @@
     <string name="founded">&lt;b>Founded:&lt;/b> %1$d</string>
     <string name="country">&lt;b>Country:&lt;/b> %1$s</string>
     <string name="venue">&lt;b>Venue:&lt;/b> %1$s</string>
-    <string name="welcome_messages">Hello, %1$s! You have &lt;b>%2$d new messages&lt;/b>.</string>
     <string name="team_logo">Team Logo</string>
 
 </resources>

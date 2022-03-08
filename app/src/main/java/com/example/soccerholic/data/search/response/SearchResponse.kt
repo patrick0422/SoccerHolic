@@ -1,9 +1,9 @@
-package com.example.soccerholic.data.search
+package com.example.soccerholic.data.search.response
 
 
 import com.google.gson.annotations.SerializedName
 
-data class SearchResponse(
+data class SearchResponse<T>(
     @SerializedName("parameters")
     val parameters: Parameters, // 검색어
     @SerializedName("errors")
@@ -13,7 +13,7 @@ data class SearchResponse(
     @SerializedName("paging")
     val paging: Paging, // 페이지
     @SerializedName("response")
-    val response: List<Response> // 검색 결과
+    val teamResponse: List<T> // 검색 결과
 )
 
 data class Parameters(
