@@ -1,8 +1,10 @@
 package com.example.soccerholic.ui.main.search
 
+import android.os.Build
 import android.text.Html
 import android.view.View
 import android.widget.SearchView
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import com.example.soccerholic.R
 import com.example.soccerholic.base.BaseFragment
@@ -20,18 +22,20 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
         searchView.maxWidth = Int.MAX_VALUE
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(text: String?): Boolean = searchTeamWithKeyWord(text)
+            @RequiresApi(Build.VERSION_CODES.N)
+            override fun onQueryTextSubmit(text: String?): Boolean = searchTeamWithKeyWord(text ?: "")
             override fun onQueryTextChange(newText: String?): Boolean = true
         })
     }
 
-    fun searchTeamWithKeyWord(keyWord: String?): Boolean {
-        if (!(keyWord!!.matches(Regex("[a-zA-Z0-9]")))) {
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun searchTeamWithKeyWord(keyWord: String): Boolean {
+        if (!isKeyWordValid(keyWord)) {
             makeToast("알파벳과 숫자만 입력 가능합니다")
             return true
         }
 
-        if (keyWord!!.length < 3) {
+        if (keyWord.length < 3) {
             makeToast("3글자 이상 입력해 주세요")
             return true
         }
@@ -52,6 +56,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
                         ),
                         Html.FROM_HTML_MODE_LEGACY
                     )
+
                     resultListAdapter.setData(result.data.teamResponse)
                 }
                 is NetworkResult.Error -> {
@@ -91,8 +96,4 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
     }
 }
 
-fun main() {
-    print(if(checkFormat("ASDFAS")) "굿" else "낫굿")
-}
-
-fun checkFormat(keyWord: String): Boolean = (!(keyWord.matches(Regex("[a-zA-Z0-9]"))))
+fun isKeyWordValid(keyWord: String): Boolean = ((keyWord.matches(Regex("^[a-zA-Z0-9\\s]+\$"))))
