@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.soccerholic.data.SearchRepository
 import com.example.soccerholic.data.search.response.SearchResponse
+import com.example.soccerholic.data.search.response.result.SquadResponse
 import com.example.soccerholic.data.search.response.result.TeamResponse
 import com.example.soccerholic.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,6 +23,9 @@ class SearchViewModel @Inject constructor(
 
     private val _idSearchResponse: MutableLiveData<NetworkResult<SearchResponse<TeamResponse>>> = MutableLiveData()
     val idSearchResponse: LiveData<NetworkResult<SearchResponse<TeamResponse>>> get() = _idSearchResponse
+
+    private val _squadSearchResponse: MutableLiveData<NetworkResult<SearchResponse<SquadResponse>>> = MutableLiveData()
+    val squadSearchResponse: LiveData<NetworkResult<SearchResponse<SquadResponse>>> get() = _squadSearchResponse
 
     fun searchTeamWithKeyWord(keyWord: String) = viewModelScope.launch {
         _searchResponse.value = NetworkResult.Loading()
@@ -49,6 +53,21 @@ class SearchViewModel @Inject constructor(
                 NetworkResult.Error(response.message())
             }
         } catch (e: Exception) {
+            NetworkResult.Error(e.stackTraceToString())
+        }
+    }
+
+    fun searchSquadWithTeamId(teamId: Int) = viewModelScope.launch {
+        _squadSearchResponse.value = NetworkResult.Loading()
+        val response = searchRepository.searchSquadByTeamId(teamId)
+
+        _squadSearchResponse.value = try {
+            if (response.isSuccessful) {
+                NetworkResult.Success(response.body()!!)
+            } else {
+                NetworkResult.Error(response.message())
+            }
+        } catch(e: Exception) {
             NetworkResult.Error(e.stackTraceToString())
         }
     }

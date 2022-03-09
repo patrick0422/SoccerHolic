@@ -20,11 +20,13 @@ import dagger.hilt.android.AndroidEntryPoint
 class DetailFragment : BaseFragment<FragmentDetailBinding>(R.layout.fragment_detail) {
     private val args by navArgs<DetailFragmentArgs>()
     private val searchViewModel: SearchViewModel by viewModels()
+    private val squadAdapter = SquadAdapter()
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun init() {
-        searchViewModel.searchTeamWithTeamId(args.teamId)
+        binding.squadRecyclerView.adapter = squadAdapter
 
+        searchViewModel.searchTeamWithTeamId(args.teamId)
         searchViewModel.idSearchResponse.observe(this) { result ->
             when (result) {
                 is NetworkResult.Success -> {
@@ -37,6 +39,21 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(R.layout.fragment_det
                 }
                 is NetworkResult.Loading -> {
                     isLoading(true)
+                }
+            }
+        }
+
+        searchViewModel.searchSquadWithTeamId(args.teamId)
+        searchViewModel.squadSearchResponse.observe(this) { result ->
+            when (result) {
+                is NetworkResult.Success -> {
+                    squadAdapter.setData(result.data!!.teamResponse[0].players)
+                }
+                is NetworkResult.Error -> {
+
+                }
+                is NetworkResult.Loading -> {
+
                 }
             }
         }
