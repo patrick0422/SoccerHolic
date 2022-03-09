@@ -13,6 +13,6 @@ class SearchRepository @Inject constructor(
     suspend fun searchTeams(query: String): Response<SearchResponse<TeamResponse>> = searchApi.searchTeams(query)
     suspend fun searchTeamById(teamId: Int): Response<SearchResponse<TeamResponse>> = searchApi.searchTeamById(teamId)
 
-    suspend fun searchSquadsByTeamId(teamId: Int): Response<SearchResponse<SquadResponse>> = searchApi.searchSquadsByTeamId(teamId)
+    suspend fun searchSquadByTeamId(teamId: Int): Response<SearchResponse<SquadResponse>> = searchApi.searchSquadByTeamId(teamId)
 }
 

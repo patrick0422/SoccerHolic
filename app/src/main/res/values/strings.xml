@@ -10,5 +10,7 @@
     <string name="team_logo">Team Logo</string>
     <string name="squad_info">Squad Info</string>
     <string name="player_number">No.%1$d</string>
+    <string name="player_age">Age: %1$d</string>
+    <string name="contents_provider">Contents provided by API_FOOTBALL</string>
 
 </resources>

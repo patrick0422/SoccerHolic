@@ -7,13 +7,36 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.soccerholic.R
 import com.example.soccerholic.base.BaseDiffUtil
 import com.example.soccerholic.data.search.response.result.TeamResponse
 import com.example.soccerholic.databinding.ItemSearchResultListBinding
 
-class SearchResultListAdapter : RecyclerView.Adapter<SearchResultViewHolder>() {
+class SearchResultListAdapter : RecyclerView.Adapter<SearchResultListAdapter.SearchResultViewHolder>() {
     var searchResultList = listOf<TeamResponse>()
+
+    class SearchResultViewHolder(
+        private val binding: ItemSearchResultListBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+        companion object {
+            fun from(parent: ViewGroup) =
+                SearchResultViewHolder(ItemSearchResultListBinding.inflate(LayoutInflater.from(parent.context), parent,false))
+        }
+
+        fun bind(teamResponse: TeamResponse) = with(binding) {
+            Glide
+                .with(binding.root)
+                .load(teamResponse.team.logo)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(teamImage)
+            teamName.text = teamResponse.team.name
+            teamCard.setOnClickListener {
+                val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(teamResponse.team.id)
+                it.findNavController().navigate(action)
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultViewHolder = SearchResultViewHolder.from(parent)
 
@@ -30,30 +53,3 @@ class SearchResultListAdapter : RecyclerView.Adapter<SearchResultViewHolder>() {
     }
 }
 
-class SearchResultViewHolder(
-    private val binding: ItemSearchResultListBinding
-) : RecyclerView.ViewHolder(binding.root) {
-    companion object {
-        fun from(parent: ViewGroup) = SearchResultViewHolder(
-            DataBindingUtil.inflate(
-                LayoutInflater.from(parent.context),
-                R.layout.item_search_result_list,
-                parent,
-                false
-            )
-        )
-    }
-
-    fun bind(teamResponse: TeamResponse) = with(binding) {
-        Glide
-            .with(binding.root)
-            .load(teamResponse.team.logo)
-            .into(teamImage)
-        teamName.text = teamResponse.team.name
-
-        teamCard.setOnClickListener {
-            val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(teamResponse.team.id)
-            it.findNavController().navigate(action)
-        }
-    }
-}
