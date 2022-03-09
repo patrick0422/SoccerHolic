@@ -21,6 +21,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(R.layout.fragment_det
     private val args by navArgs<DetailFragmentArgs>()
     private val searchViewModel: SearchViewModel by viewModels()
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun init() {
         searchViewModel.searchTeamWithTeamId(args.teamId)
 
