@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="12dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/imagePlayerProfile"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                tools:background="@color/teal_200"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textPlayerName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:ellipsize="marquee"
+                app:layout_constraintEnd_toStartOf="@+id/textPlayerNumber"
+                app:layout_constraintStart_toEndOf="@+id/imagePlayerProfile"
+                app:layout_constraintTop_toTopOf="@+id/imagePlayerProfile"
+                tools:text="Name"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/textPlayerNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textAlignment="viewEnd"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imagePlayerProfile"
+                tools:text="@string/player_number" />
+
+            <TextView
+                android:id="@+id/textPlayerAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/textPlayerName"
+                app:layout_constraintTop_toBottomOf="@+id/textPlayerName"
+                tools:text="Age: 23" />
+
+            <TextView
+                android:id="@+id/textPlayerPosition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/imagePlayerProfile"
+                app:layout_constraintEnd_toEndOf="@+id/textPlayerNumber"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/imagePlayerProfile"
+                tools:text="RB" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

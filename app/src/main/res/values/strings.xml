@@ -8,5 +8,7 @@
     <string name="country">&lt;b>Country:&lt;/b> %1$s</string>
     <string name="venue">&lt;b>Venue:&lt;/b> %1$s</string>
     <string name="team_logo">Team Logo</string>
+    <string name="squad_info">Squad Info</string>
+    <string name="player_number">No.%1$d</string>
 
 </resources>
