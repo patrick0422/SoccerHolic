@@ -1,4 +1,4 @@
-package com.example.soccerholic.data.remote.response.result
+package com.example.soccerholic.data.remote.model
 
 
 import com.example.soccerholic.data.remote.model.Player

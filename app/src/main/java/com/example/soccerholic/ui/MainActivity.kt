@@ -1,4 +1,4 @@
-package com.example.soccerholic.ui.main
+package com.example.soccerholic.ui
 
 import android.view.Menu
 import android.view.MenuItem
@@ -24,9 +24,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
         if (!navController.navigateUp())
             super.onBackPressed()
-
-//        if (!navController.popBackStack())
-//            super.onBackPressed()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
