@@ -12,5 +12,6 @@
     <string name="player_number">No.%1$d</string>
     <string name="player_age">Age: %1$d</string>
     <string name="contents_provider">Contents provided by API_FOOTBALL</string>
+    <string name="favorite_team">Favorite Team</string>
 
 </resources>
