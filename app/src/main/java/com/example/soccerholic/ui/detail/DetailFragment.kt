@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.soccerholic.R
 import com.example.soccerholic.base.BaseFragment
-import com.example.soccerholic.data.remote.response.result.TeamData
+import com.example.soccerholic.data.remote.model.TeamData
 import com.example.soccerholic.databinding.FragmentDetailBinding
 import com.example.soccerholic.ui.search.SearchViewModel
 import com.example.soccerholic.util.NetworkResult

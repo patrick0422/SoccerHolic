@@ -94,6 +94,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
             binding.textResult.visibility = View.VISIBLE
         }
     }
-}
 
-fun isKeyWordValid(keyWord: String): Boolean = ((keyWord.matches(Regex("^[a-zA-Z0-9\\s]+\$"))))
+    fun isKeyWordValid(keyWord: String): Boolean = ((keyWord.matches(Regex("^[a-zA-Z0-9\\s]+\$"))))
+}

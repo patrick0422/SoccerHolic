@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.soccerholic.data.remote.SearchRepository
 import com.example.soccerholic.data.remote.response.SearchResponse
-import com.example.soccerholic.data.remote.response.result.SquadData
-import com.example.soccerholic.data.remote.response.result.TeamData
+import com.example.soccerholic.data.remote.model.SquadData
+import com.example.soccerholic.data.remote.model.TeamData
 import com.example.soccerholic.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

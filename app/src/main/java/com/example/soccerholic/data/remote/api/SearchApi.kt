@@ -1,8 +1,8 @@
 package com.example.soccerholic.data.remote.api
 
 import com.example.soccerholic.data.remote.response.SearchResponse
-import com.example.soccerholic.data.remote.response.result.SquadData
-import com.example.soccerholic.data.remote.response.result.TeamData
+import com.example.soccerholic.data.remote.model.SquadData
+import com.example.soccerholic.data.remote.model.TeamData
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

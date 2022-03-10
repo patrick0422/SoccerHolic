@@ -11,9 +11,5 @@ import androidx.room.TypeConverters
 )
 @TypeConverters(TeamBookmarkTypeConverter::class)
 abstract class TeamBookmarkDatabase: RoomDatabase() {
-
     abstract fun teamBookmarkDao(): TeamBookmarkDao
-
-
-
 }
