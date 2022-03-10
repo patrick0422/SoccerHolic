@@ -1,4 +1,4 @@
-package com.example.soccerholic.ui.main.detail
+package com.example.soccerholic.ui.detail
 
 import android.os.Build
 import android.text.Html
@@ -12,7 +12,7 @@ import com.example.soccerholic.R
 import com.example.soccerholic.base.BaseFragment
 import com.example.soccerholic.data.search.response.result.TeamResponse
 import com.example.soccerholic.databinding.FragmentDetailBinding
-import com.example.soccerholic.ui.main.search.SearchViewModel
+import com.example.soccerholic.ui.search.SearchViewModel
 import com.example.soccerholic.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
 

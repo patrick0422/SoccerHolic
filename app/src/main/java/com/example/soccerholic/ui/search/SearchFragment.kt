@@ -1,4 +1,4 @@
-package com.example.soccerholic.ui.main.search
+package com.example.soccerholic.ui.search
 
 import android.os.Build
 import android.text.Html

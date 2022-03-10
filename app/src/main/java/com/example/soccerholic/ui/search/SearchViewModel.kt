@@ -1,4 +1,4 @@
-package com.example.soccerholic.ui.main.search
+package com.example.soccerholic.ui.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -47,7 +47,7 @@ class SearchViewModel @Inject constructor(
         val response = searchRepository.searchTeamById(teamId)
 
         _idSearchResponse.value = try {
-            if (response.isSuccessful) {
+            if (response.isSuccessful && response.body() != null) {
                 NetworkResult.Success(response.body()!!)
             } else {
                 NetworkResult.Error(response.message())

@@ -1,14 +1,12 @@
-package com.example.soccerholic.ui.main.search
+package com.example.soccerholic.ui.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.example.soccerholic.R
 import com.example.soccerholic.base.BaseDiffUtil
 import com.example.soccerholic.data.search.response.result.TeamResponse
 import com.example.soccerholic.databinding.ItemSearchResultListBinding

@@ -1,4 +1,4 @@
-package com.example.soccerholic.ui.main.detail
+package com.example.soccerholic.ui.detail
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
