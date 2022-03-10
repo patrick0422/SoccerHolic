@@ -9,8 +9,7 @@ class TeamBookmarkTypeConverter {
     val gson = Gson()
 
     @TypeConverter
-    fun teamBookmarkToString(teamBookmark: List<TeamData>) = gson.toJson(teamBookmark)
-
+    fun teamBookmarkToString(teamBookmark: List<TeamData>): String = gson.toJson(teamBookmark)
     @TypeConverter
     fun stringToTeamBookmark(data: String): List<TeamData> {
         val listType = object : TypeToken<List<TeamData>>() {}.type

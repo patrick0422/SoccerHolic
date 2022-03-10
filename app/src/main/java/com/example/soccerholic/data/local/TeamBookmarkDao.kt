@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.Flow
 interface TeamBookmarkDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTeamBookmark(teamBookmark: List<TeamData>)
+    suspend fun insertTeamBookmark(teamBookmark: TeamBookmarkEntity)
 
     @Query("SELECT * FROM ${Constants.TABLE_NAME} ORDER BY id ASC;")
-    fun readTeamBookmark(): Flow<List<TeamData>>
+    fun readTeamBookmark(): Flow<TeamBookmarkEntity>
 }
