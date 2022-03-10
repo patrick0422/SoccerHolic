@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.soccerholic.data.remote.SearchRepository
 import com.example.soccerholic.data.remote.response.SearchResponse
-import com.example.soccerholic.data.remote.response.result.SquadResponse
-import com.example.soccerholic.data.remote.response.result.TeamResponse
+import com.example.soccerholic.data.remote.response.result.SquadData
+import com.example.soccerholic.data.remote.response.result.TeamData
 import com.example.soccerholic.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -18,20 +18,20 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(
     private val searchRepository: SearchRepository
 ) : ViewModel() {
-    private val _searchResponse: MutableLiveData<NetworkResult<SearchResponse<TeamResponse>>> = MutableLiveData()
-    val searchResponse: LiveData<NetworkResult<SearchResponse<TeamResponse>>> get() = _searchResponse
+    private val _searchData: MutableLiveData<NetworkResult<SearchResponse<TeamData>>> = MutableLiveData()
+    val searchData: LiveData<NetworkResult<SearchResponse<TeamData>>> get() = _searchData
 
-    private val _idSearchResponse: MutableLiveData<NetworkResult<SearchResponse<TeamResponse>>> = MutableLiveData()
-    val idSearchResponse: LiveData<NetworkResult<SearchResponse<TeamResponse>>> get() = _idSearchResponse
+    private val _idSearchData: MutableLiveData<NetworkResult<SearchResponse<TeamData>>> = MutableLiveData()
+    val idSearchData: LiveData<NetworkResult<SearchResponse<TeamData>>> get() = _idSearchData
 
-    private val _squadSearchResponse: MutableLiveData<NetworkResult<SearchResponse<SquadResponse>>> = MutableLiveData()
-    val squadSearchResponse: LiveData<NetworkResult<SearchResponse<SquadResponse>>> get() = _squadSearchResponse
+    private val _squadSearchData: MutableLiveData<NetworkResult<SearchResponse<SquadData>>> = MutableLiveData()
+    val squadSearchData: LiveData<NetworkResult<SearchResponse<SquadData>>> get() = _squadSearchData
 
     fun searchTeamWithKeyWord(keyWord: String) = viewModelScope.launch {
-        _searchResponse.value = NetworkResult.Loading()
+        _searchData.value = NetworkResult.Loading()
         val response = searchRepository.searchTeams(keyWord)
 
-        _searchResponse.value = try {
+        _searchData.value = try {
             if (response.isSuccessful) {
                 NetworkResult.Success(response.body()!!)
             } else {
@@ -43,10 +43,10 @@ class SearchViewModel @Inject constructor(
     }
 
     fun searchTeamWithTeamId(teamId: Int) = viewModelScope.launch {
-        _idSearchResponse.value = NetworkResult.Loading()
+        _idSearchData.value = NetworkResult.Loading()
         val response = searchRepository.searchTeamById(teamId)
 
-        _idSearchResponse.value = try {
+        _idSearchData.value = try {
             if (response.isSuccessful && response.body() != null) {
                 NetworkResult.Success(response.body()!!)
             } else {
@@ -58,10 +58,10 @@ class SearchViewModel @Inject constructor(
     }
 
     fun searchSquadWithTeamId(teamId: Int) = viewModelScope.launch {
-        _squadSearchResponse.value = NetworkResult.Loading()
+        _squadSearchData.value = NetworkResult.Loading()
         val response = searchRepository.searchSquadByTeamId(teamId)
 
-        _squadSearchResponse.value = try {
+        _squadSearchData.value = try {
             if (response.isSuccessful) {
                 NetworkResult.Success(response.body()!!)
             } else {

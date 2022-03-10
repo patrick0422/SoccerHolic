@@ -1,13 +1,13 @@
 package com.example.soccerholic.data.remote.response.result
 
 
-import com.example.soccerholic.data.remote.model.Player
 import com.example.soccerholic.data.remote.model.Team
+import com.example.soccerholic.data.remote.model.Venue
 import com.google.gson.annotations.SerializedName
 
-data class SquadResponse(
+data class TeamData(
     @SerializedName("team")
     val team: Team,
-    @SerializedName("players")
-    val players: List<Player>
+    @SerializedName("venue")
+    val venue: Venue
 )

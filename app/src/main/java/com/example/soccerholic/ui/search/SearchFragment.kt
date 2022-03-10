@@ -41,23 +41,23 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         }
 
         searchViewModel.searchTeamWithKeyWord(keyWord)
-        searchViewModel.searchResponse.observe(requireActivity()) { result ->
+        searchViewModel.searchData.observe(requireActivity()) { result ->
             when (result) {
                 is NetworkResult.Success -> {
                     isLoading(false)
 
-                    isEmpty(result.data!!.teamResponse.isEmpty())
+                    isEmpty(result.data!!.response.isEmpty())
 
                     binding.textResult.text = Html.fromHtml(
                         getString(
                             R.string.search_result,
                             result.data.parameters.search,
-                            result.data.teamResponse.size
+                            result.data.response.size
                         ),
                         Html.FROM_HTML_MODE_LEGACY
                     )
 
-                    resultListAdapter.setData(result.data.teamResponse)
+                    resultListAdapter.setData(result.data.response)
                 }
                 is NetworkResult.Error -> {
                     isLoading(false)

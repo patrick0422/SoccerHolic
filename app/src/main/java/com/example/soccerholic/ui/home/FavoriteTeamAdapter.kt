@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.soccerholic.base.BaseDiffUtil
-import com.example.soccerholic.data.remote.response.result.TeamResponse
+import com.example.soccerholic.data.remote.response.result.TeamData
 import com.example.soccerholic.databinding.ItemFavoriteTeamListBinding
 
 class FavoriteTeamAdapter: RecyclerView.Adapter<FavoriteTeamAdapter.FavoriteTeamViewHolder>() {
-    private var favoriteTeamList: List<TeamResponse> = emptyList()
+    private var favoriteTeamList: List<TeamData> = emptyList()
     val isListEmpty get() = favoriteTeamList.isEmpty()
 
     class FavoriteTeamViewHolder(private val binding: ItemFavoriteTeamListBinding): RecyclerView.ViewHolder(binding.root) {
@@ -27,17 +27,17 @@ class FavoriteTeamAdapter: RecyclerView.Adapter<FavoriteTeamAdapter.FavoriteTeam
                 )
         }
 
-        fun bind(teamResponse: TeamResponse) = with(binding) {
+        fun bind(teamData: TeamData) = with(binding) {
 
             Glide
                 .with(root)
-                .load(teamResponse.team.logo)
+                .load(teamData.team.logo)
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(imageTeamLogo)
-            textTeamName.text = teamResponse.team.name
+            textTeamName.text = teamData.team.name
 
             favoriteCard.setOnClickListener {
-                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(teamResponse.team.id)
+                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(teamData.team.id)
                 it.findNavController().navigate(action)
             }
         }
@@ -49,7 +49,7 @@ class FavoriteTeamAdapter: RecyclerView.Adapter<FavoriteTeamAdapter.FavoriteTeam
 
     override fun getItemCount(): Int = favoriteTeamList.size
 
-    fun setData(newData: List<TeamResponse>) {
+    fun setData(newData: List<TeamData>) {
         val favoriteTeamListDiffUtil = BaseDiffUtil(favoriteTeamList, newData)
         val diffUtilResult = DiffUtil.calculateDiff(favoriteTeamListDiffUtil)
 

@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.soccerholic.data.remote.response.result.TeamResponse
+import com.example.soccerholic.data.remote.response.result.TeamData
 import com.example.soccerholic.util.Constants
 import kotlinx.coroutines.flow.Flow
 
@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.Flow
 interface TeamBookmarkDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTeamBookmark(teamBookmark: List<TeamResponse>)
+    suspend fun insertTeamBookmark(teamBookmark: List<TeamData>)
 
     @Query("SELECT * FROM ${Constants.TABLE_NAME} ORDER BY id ASC;")
-    suspend fun readTeamBookmark(): Flow<List<TeamResponse>>
+    fun readTeamBookmark(): Flow<List<TeamData>>
 }

@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.soccerholic.base.BaseDiffUtil
-import com.example.soccerholic.data.remote.response.result.TeamResponse
+import com.example.soccerholic.data.remote.response.result.TeamData
 import com.example.soccerholic.databinding.ItemSearchResultListBinding
 
 class SearchResultListAdapter : RecyclerView.Adapter<SearchResultListAdapter.SearchResultViewHolder>() {
-    var searchResultList = listOf<TeamResponse>()
+    var searchResultList = listOf<TeamData>()
 
     class SearchResultViewHolder(
         private val binding: ItemSearchResultListBinding
@@ -22,15 +22,15 @@ class SearchResultListAdapter : RecyclerView.Adapter<SearchResultListAdapter.Sea
                 SearchResultViewHolder(ItemSearchResultListBinding.inflate(LayoutInflater.from(parent.context), parent,false))
         }
 
-        fun bind(teamResponse: TeamResponse) = with(binding) {
+        fun bind(teamData: TeamData) = with(binding) {
             Glide
                 .with(binding.root)
-                .load(teamResponse.team.logo)
+                .load(teamData.team.logo)
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(teamImage)
-            teamName.text = teamResponse.team.name
+            teamName.text = teamData.team.name
             teamCard.setOnClickListener {
-                val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(teamResponse.team.id)
+                val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(teamData.team.id)
                 it.findNavController().navigate(action)
             }
         }
@@ -42,7 +42,7 @@ class SearchResultListAdapter : RecyclerView.Adapter<SearchResultListAdapter.Sea
 
     override fun getItemCount(): Int = searchResultList.size
 
-    fun setData(newData: List<TeamResponse>) {
+    fun setData(newData: List<TeamData>) {
         val searchResultListDiffUtil = BaseDiffUtil(searchResultList, newData)
         val diffUtilResult = DiffUtil.calculateDiff(searchResultListDiffUtil)
 

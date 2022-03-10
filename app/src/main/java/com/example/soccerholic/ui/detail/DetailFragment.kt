@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.soccerholic.R
 import com.example.soccerholic.base.BaseFragment
-import com.example.soccerholic.data.remote.response.result.TeamResponse
+import com.example.soccerholic.data.remote.response.result.TeamData
 import com.example.soccerholic.databinding.FragmentDetailBinding
 import com.example.soccerholic.ui.search.SearchViewModel
 import com.example.soccerholic.util.NetworkResult
@@ -27,10 +27,10 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(R.layout.fragment_det
         binding.squadRecyclerView.adapter = squadAdapter
 
         searchViewModel.searchTeamWithTeamId(args.teamId)
-        searchViewModel.idSearchResponse.observe(this) { result ->
+        searchViewModel.idSearchData.observe(this) { result ->
             when (result) {
                 is NetworkResult.Success -> {
-                    setData(result.data!!.teamResponse[0])
+                    setData(result.data!!.response[0])
                     isLoading(false)
                 }
                 is NetworkResult.Error -> {
@@ -44,10 +44,10 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(R.layout.fragment_det
         }
 
         searchViewModel.searchSquadWithTeamId(args.teamId)
-        searchViewModel.squadSearchResponse.observe(this) { result ->
+        searchViewModel.squadSearchData.observe(this) { result ->
             when (result) {
                 is NetworkResult.Success -> {
-                    squadAdapter.setData(result.data!!.teamResponse[0].players)
+                    squadAdapter.setData(result.data!!.response[0].players)
                 }
                 is NetworkResult.Error -> {
 
@@ -60,14 +60,14 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(R.layout.fragment_det
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    private fun setData(teamResponse: TeamResponse) = with(binding) {
+    private fun setData(teamData: TeamData) = with(binding) {
         Glide
             .with(binding.root)
-            .load(teamResponse.team.logo)
+            .load(teamData.team.logo)
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(imageLogo)
 
-        with(teamResponse) {
+        with(teamData) {
             textName.text = team.name
             textVenue.text = Html.fromHtml(getString(R.string.venue, venue.name), Html.FROM_HTML_MODE_LEGACY)
             textCountry.text = Html.fromHtml(getString(R.string.country, team.country), Html.FROM_HTML_MODE_LEGACY)

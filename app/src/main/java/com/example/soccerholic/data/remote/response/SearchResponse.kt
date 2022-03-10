@@ -13,7 +13,7 @@ data class SearchResponse<T>(
     @SerializedName("paging")
     val paging: Paging, // 페이지
     @SerializedName("response")
-    val teamResponse: List<T> // 검색 결과
+    val response: List<T> // 검색 결과
 )
 
 data class Parameters(
