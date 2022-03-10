@@ -1,9 +1,9 @@
-package com.example.soccerholic.data
+package com.example.soccerholic.data.remote
 
-import com.example.soccerholic.data.api.SearchApi
-import com.example.soccerholic.data.search.response.SearchResponse
-import com.example.soccerholic.data.search.response.result.SquadResponse
-import com.example.soccerholic.data.search.response.result.TeamResponse
+import com.example.soccerholic.data.remote.api.SearchApi
+import com.example.soccerholic.data.remote.response.SearchResponse
+import com.example.soccerholic.data.remote.response.result.SquadResponse
+import com.example.soccerholic.data.remote.response.result.TeamResponse
 import retrofit2.Response
 import javax.inject.Inject
 

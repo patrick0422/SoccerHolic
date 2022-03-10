@@ -1,4 +1,4 @@
-package com.example.soccerholic.data.search.response
+package com.example.soccerholic.data.remote.response
 
 
 import com.google.gson.annotations.SerializedName

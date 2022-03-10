@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.soccerholic.data.SearchRepository
-import com.example.soccerholic.data.search.response.SearchResponse
-import com.example.soccerholic.data.search.response.result.SquadResponse
-import com.example.soccerholic.data.search.response.result.TeamResponse
+import com.example.soccerholic.data.remote.SearchRepository
+import com.example.soccerholic.data.remote.response.SearchResponse
+import com.example.soccerholic.data.remote.response.result.SquadResponse
+import com.example.soccerholic.data.remote.response.result.TeamResponse
 import com.example.soccerholic.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

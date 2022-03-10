@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.soccerholic.R
 import com.example.soccerholic.base.BaseDiffUtil
-import com.example.soccerholic.data.model.Player
+import com.example.soccerholic.data.remote.model.Player
 import com.example.soccerholic.databinding.ItemSquadBinding
 
 class SquadAdapter : RecyclerView.Adapter<SquadAdapter.SquadViewHolder>() {
