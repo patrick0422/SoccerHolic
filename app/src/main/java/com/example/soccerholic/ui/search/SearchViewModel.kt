@@ -32,7 +32,7 @@ class SearchViewModel @Inject constructor(
         val response = searchRepository.searchTeams(keyWord)
 
         _searchData.value = try {
-            if (response.isSuccessful) {
+            if (response.isSuccessful && response.body() != null) {
                 NetworkResult.Success(response.body()!!)
             } else {
                 NetworkResult.Error(response.message())
@@ -62,8 +62,11 @@ class SearchViewModel @Inject constructor(
         val response = searchRepository.searchSquadByTeamId(teamId)
 
         _squadSearchData.value = try {
-            if (response.isSuccessful) {
-                NetworkResult.Success(response.body()!!)
+            if (response.isSuccessful && response.body() != null) {
+                if (response.body()!!.response.isEmpty())
+                    NetworkResult.Error("No Squad Info")
+                else
+                    NetworkResult.Success(response.body()!!)
             } else {
                 NetworkResult.Error(response.message())
             }

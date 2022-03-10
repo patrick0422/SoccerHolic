@@ -48,9 +48,10 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(R.layout.fragment_det
             when (result) {
                 is NetworkResult.Success -> {
                     squadAdapter.setData(result.data!!.response[0].players)
+                    isSquadInfoEmpty(false)
                 }
                 is NetworkResult.Error -> {
-
+                    isSquadInfoEmpty(true)
                 }
                 is NetworkResult.Loading -> {
 
@@ -71,11 +72,23 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(R.layout.fragment_det
             textName.text = team.name
             textVenue.text = Html.fromHtml(getString(R.string.venue, venue.name), Html.FROM_HTML_MODE_LEGACY)
             textCountry.text = Html.fromHtml(getString(R.string.country, team.country), Html.FROM_HTML_MODE_LEGACY)
-            textFounded.text = Html.fromHtml(getString(R.string.founded, team.founded), Html.FROM_HTML_MODE_LEGACY)
+            textFounded.text =  Html.fromHtml(getString(R.string.founded, team.founded), Html.FROM_HTML_MODE_LEGACY)
         }
     }
 
     private fun isLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    private fun isSquadInfoEmpty(isEmpty: Boolean) = with(binding) {
+        if (isEmpty) {
+            imageError.visibility = View.VISIBLE
+            textError.visibility = View.VISIBLE
+            squadRecyclerView.visibility = View.INVISIBLE
+        } else {
+            imageError.visibility = View.GONE
+            textError.visibility = View.GONE
+            squadRecyclerView.visibility = View.VISIBLE
+        }
     }
 }
