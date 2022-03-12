@@ -1,7 +1,7 @@
 package com.example.soccerholic.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import com.example.soccerholic.R
 import com.example.soccerholic.base.BaseFragment
 import com.example.soccerholic.databinding.FragmentHomeBinding
@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
-    private val searchViewModel: SearchViewModel by viewModels()
+    private val searchViewModel: SearchViewModel by activityViewModels()
     private val favoriteTeamAdapter = FavoriteTeamAdapter()
 
     override fun init() = with(binding) {

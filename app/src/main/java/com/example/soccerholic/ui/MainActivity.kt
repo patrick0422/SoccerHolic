@@ -4,16 +4,19 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import androidx.navigation.findNavController
 import com.example.soccerholic.R
 import com.example.soccerholic.base.BaseActivity
 import com.example.soccerholic.databinding.ActivityMainBinding
+import com.example.soccerholic.ui.search.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private val mainViewModel: MainViewModel by viewModels()
+    private val searchViewModel: SearchViewModel by viewModels()
     private val navController by lazy { findNavController(R.id.fragmentContainerView) }
 
     override fun init(): Unit = with(binding) {

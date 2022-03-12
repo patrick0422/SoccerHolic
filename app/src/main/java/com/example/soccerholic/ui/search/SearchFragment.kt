@@ -5,7 +5,7 @@ import android.text.Html
 import android.view.View
 import android.widget.SearchView
 import androidx.annotation.RequiresApi
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import com.example.soccerholic.R
 import com.example.soccerholic.base.BaseFragment
 import com.example.soccerholic.databinding.FragmentSearchBinding
@@ -14,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search) {
-    private val searchViewModel: SearchViewModel by viewModels()
+    private val searchViewModel: SearchViewModel by activityViewModels()
     private val resultListAdapter = SearchResultListAdapter()
 
     override fun init() = with(binding) {
