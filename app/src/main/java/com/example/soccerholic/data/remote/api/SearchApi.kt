@@ -1,5 +1,6 @@
 package com.example.soccerholic.data.remote.api
 
+import com.example.soccerholic.data.remote.model.DetailedPlayerData
 import com.example.soccerholic.data.remote.response.SearchResponse
 import com.example.soccerholic.data.remote.model.SquadData
 import com.example.soccerholic.data.remote.model.TeamData
@@ -16,4 +17,7 @@ interface SearchApi {
 
     @GET("players/squads")
     suspend fun searchSquadByTeamId(@Query("team") teamId: Int): Response<SearchResponse<SquadData>>
+
+    @GET("players")
+    suspend fun searchPlayerByPlayerId(@Query("id") playerId: Int): Response<SearchResponse<DetailedPlayerData>>
 }
