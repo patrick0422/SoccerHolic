@@ -11,14 +11,14 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.soccerholic.R
 import com.example.soccerholic.base.BaseFragment
 import com.example.soccerholic.data.remote.model.TeamData
-import com.example.soccerholic.databinding.FragmentDetailBinding
+import com.example.soccerholic.databinding.FragmentTeamDetailBinding
 import com.example.soccerholic.ui.search.SearchViewModel
 import com.example.soccerholic.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DetailFragment : BaseFragment<FragmentDetailBinding>(R.layout.fragment_detail) {
-    private val args by navArgs<DetailFragmentArgs>()
+class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.fragment_team_detail) {
+    private val args by navArgs<TeamDetailFragmentArgs>()
     private val searchViewModel: SearchViewModel by viewModels()
     private val squadAdapter = SquadAdapter()
 

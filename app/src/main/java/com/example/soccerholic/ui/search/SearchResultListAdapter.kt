@@ -30,7 +30,7 @@ class SearchResultListAdapter : RecyclerView.Adapter<SearchResultListAdapter.Sea
                 .into(teamImage)
             teamName.text = teamData.team.name
             teamCard.setOnClickListener {
-                val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(teamData.team.id)
+                val action = SearchFragmentDirections.actionSearchFragmentToTeamDetailFragment(teamData.team.id)
                 it.findNavController().navigate(action)
             }
         }

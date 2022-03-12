@@ -37,7 +37,7 @@ class FavoriteTeamAdapter: RecyclerView.Adapter<FavoriteTeamAdapter.FavoriteTeam
             textTeamName.text = teamData.team.name
 
             favoriteCard.setOnClickListener {
-                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(teamData.team.id)
+                val action = HomeFragmentDirections.actionHomeFragmentToTeamDetailFragment(teamData.team.id)
                 it.findNavController().navigate(action)
             }
         }
