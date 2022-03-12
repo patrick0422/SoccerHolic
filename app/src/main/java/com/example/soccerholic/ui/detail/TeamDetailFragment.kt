@@ -2,9 +2,12 @@ package com.example.soccerholic.ui.detail
 
 import android.os.Build
 import android.text.Html
+import android.view.MenuItem
 import android.view.View
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -25,6 +28,8 @@ class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.frag
     @RequiresApi(Build.VERSION_CODES.N)
     override fun init() {
         binding.squadRecyclerView.adapter = squadAdapter
+
+        (requireActivity() as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         searchViewModel.searchTeamWithTeamId(args.teamId)
         searchViewModel.idSearchData.observe(this) { result ->
@@ -90,5 +95,13 @@ class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.frag
             textError.visibility = View.GONE
             squadRecyclerView.visibility = View.VISIBLE
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            findNavController().navigateUp()
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }

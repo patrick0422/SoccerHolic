@@ -13,4 +13,5 @@
     <string name="contents_provider">Contents provided by API-FOOTBALL</string>
     <string name="favorite_team">Favorite Team</string>
     <string name="no_data">No Data Available</string>
+    <string name="back">Back</string>
 </resources>

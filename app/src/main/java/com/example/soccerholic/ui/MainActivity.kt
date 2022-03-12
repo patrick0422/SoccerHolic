@@ -16,9 +16,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private val mainViewModel: MainViewModel by viewModels()
     private val navController by lazy { findNavController(R.id.fragmentContainerView) }
 
-    override fun init() = with(binding) {
+    override fun init(): Unit = with(binding) {
         setSupportActionBar(toolbar)
-
+        supportActionBar!!.setDisplayHomeAsUpEnabled(false)
 //        mainViewModel.readTeamBookmark().asLiveData().observe(this@MainActivity) {
 //
 //        }

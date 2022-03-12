@@ -38,5 +38,17 @@
         <argument
             android:name="teamId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_teamDetailFragment_to_playerDetailFragment"
+            app:destination="@id/playerDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerDetailFragment"
+        android:name="com.example.soccerholic.PlayerDetailFragment"
+        android:label="fragment_player_detail"
+        tools:layout="@layout/fragment_player_detail" >
+        <argument
+            android:name="playerId"
+            app:argType="integer" />
     </fragment>
 </navigation>
