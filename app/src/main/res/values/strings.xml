@@ -14,4 +14,17 @@
     <string name="favorite_team">Favorite Team</string>
     <string name="no_data">No Data Available</string>
     <string name="back">Back</string>
+    <string name="statistics">Statistics</string>
+    <string name="age">Age: %1$d</string>
+    <string name="height">Height: %1$s</string>
+    <string name="weight">Weight: %1$s</string>
+    <string name="appearances">Appearances:</string>
+    <string name="avg_rating">Avg. Rating:</string>
+    <string name="passes">Passes</string>
+    <string name="key_passes">Key Passes:</string>
+    <string name="total">Total:</string>
+    <string name="pass_accuracy">Pass Accuracy(%):</string>
+    <string name="on_target">On Target:</string>
+    <string name="goals">Goals</string>
+    <string name="assists">Assists:</string>
 </resources>
