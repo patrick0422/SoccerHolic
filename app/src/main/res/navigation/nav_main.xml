@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/teamDetailFragment"
-        android:name="com.example.soccerholic.ui.detail.TeamDetailFragment"
+        android:name="com.example.soccerholic.ui.detail.team.TeamDetailFragment"
         android:label="fragment_team_detail"
         tools:layout="@layout/fragment_team_detail" >
         <argument
@@ -40,11 +40,13 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_teamDetailFragment_to_playerDetailFragment"
-            app:destination="@id/playerDetailFragment" />
+            app:destination="@id/playerDetailFragment"
+            app:enterAnim="@anim/zoom_in"
+            app:popExitAnim="@anim/zoom_out" />
     </fragment>
     <fragment
         android:id="@+id/playerDetailFragment"
-        android:name="com.example.soccerholic.PlayerDetailFragment"
+        android:name="com.example.soccerholic.ui.detail.player.PlayerDetailFragment"
         android:label="fragment_player_detail"
         tools:layout="@layout/fragment_player_detail" >
         <argument

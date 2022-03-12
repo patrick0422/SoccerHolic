@@ -1,4 +1,4 @@
-package com.example.soccerholic.ui.detail
+package com.example.soccerholic.ui.detail.team
 
 import android.os.Build
 import android.text.Html
@@ -31,7 +31,8 @@ class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.frag
 
         (requireActivity() as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        searchViewModel.searchTeamWithTeamId(args.teamId)
+        if(searchViewModel.idSearchData.value == null)
+            searchViewModel.searchTeamWithTeamId(args.teamId)
         searchViewModel.idSearchData.observe(this) { result ->
             when (result) {
                 is NetworkResult.Success -> {
@@ -48,7 +49,8 @@ class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.frag
             }
         }
 
-        searchViewModel.searchSquadWithTeamId(args.teamId)
+        if(searchViewModel.squadSearchData.value == null)
+            searchViewModel.searchSquadWithTeamId(args.teamId)
         searchViewModel.squadSearchData.observe(this) { result ->
             when (result) {
                 is NetworkResult.Success -> {

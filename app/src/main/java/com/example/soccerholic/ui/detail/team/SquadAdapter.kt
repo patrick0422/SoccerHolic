@@ -1,7 +1,8 @@
-package com.example.soccerholic.ui.detail
+package com.example.soccerholic.ui.detail.team
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -30,6 +31,11 @@ class SquadAdapter : RecyclerView.Adapter<SquadAdapter.SquadViewHolder>() {
             textPlayerAge.text =  binding.root.context.getString(R.string.player_age, player.age)
             textPlayerNumber.text = binding.root.context.getString(R.string.player_number, player.number)
             textPlayerPosition.text = player.position
+
+            playerCard.setOnClickListener {
+                val action = TeamDetailFragmentDirections.actionTeamDetailFragmentToPlayerDetailFragment(player.id)
+                it.findNavController().navigate(action)
+            }
         }
     }
 

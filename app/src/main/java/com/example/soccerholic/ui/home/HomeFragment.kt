@@ -1,5 +1,6 @@
 package com.example.soccerholic.ui.home
 
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import com.example.soccerholic.R
 import com.example.soccerholic.base.BaseFragment
@@ -16,6 +17,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     override fun init() = with(binding) {
         favoriteTeamRecyclerView.adapter = favoriteTeamAdapter
 
+        (requireActivity() as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
 
         // Temporary code to test recyclerview
         if (favoriteTeamAdapter.isListEmpty)
