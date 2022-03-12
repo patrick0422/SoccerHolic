@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.soccerholic.data.remote.SearchRepository
+import com.example.soccerholic.data.remote.model.DetailedPlayerData
 import com.example.soccerholic.data.remote.response.SearchResponse
 import com.example.soccerholic.data.remote.model.SquadData
 import com.example.soccerholic.data.remote.model.TeamData
@@ -26,6 +27,9 @@ class SearchViewModel @Inject constructor(
 
     private val _squadSearchData: MutableLiveData<NetworkResult<SearchResponse<SquadData>>> = MutableLiveData()
     val squadSearchData: LiveData<NetworkResult<SearchResponse<SquadData>>> get() = _squadSearchData
+
+    private val _playerSearchData: MutableLiveData<NetworkResult<SearchResponse<DetailedPlayerData>>> = MutableLiveData()
+    val playerSearchData: LiveData<NetworkResult<SearchResponse<DetailedPlayerData>>> get() = _playerSearchData
 
     fun searchTeamWithKeyWord(keyWord: String) = viewModelScope.launch {
         _searchData.value = NetworkResult.Loading()
@@ -71,6 +75,20 @@ class SearchViewModel @Inject constructor(
                 NetworkResult.Error(response.message())
             }
         } catch(e: Exception) {
+            NetworkResult.Error(e.stackTraceToString())
+        }
+    }
+
+    fun searchPlayerWithPlayerId(playerId: Int) = viewModelScope.launch {
+        _playerSearchData.value = NetworkResult.Loading()
+        val response = searchRepository.searchPlayerByPlayerId(playerId, 2021)
+
+        _playerSearchData.value = try {
+            if (response.isSuccessful && response.body() != null) {
+                NetworkResult.Success(response.body()!!)
+            } else
+                NetworkResult.Error(response.message())
+        } catch (e: Exception) {
             NetworkResult.Error(e.stackTraceToString())
         }
     }

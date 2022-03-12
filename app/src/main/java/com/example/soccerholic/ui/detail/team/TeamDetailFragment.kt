@@ -98,12 +98,4 @@ class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.frag
             squadRecyclerView.visibility = View.VISIBLE
         }
     }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            findNavController().navigateUp()
-        }
-
-        return super.onOptionsItemSelected(item)
-    }
 }
