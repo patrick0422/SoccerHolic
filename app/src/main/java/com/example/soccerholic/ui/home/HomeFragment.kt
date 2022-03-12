@@ -22,7 +22,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         // Temporary code to test recyclerview
         if (favoriteTeamAdapter.isListEmpty)
             searchViewModel.searchTeamWithKeyWord("manchester")
-        searchViewModel.searchData.observe(requireActivity()) { result ->
+        searchViewModel.searchData.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is NetworkResult.Success -> {
                     favoriteTeamAdapter.setData(result.data!!.response)

@@ -41,7 +41,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         }
 
         searchViewModel.searchTeamWithKeyWord(keyWord)
-        searchViewModel.searchData.observe(requireActivity()) { result ->
+        searchViewModel.searchData.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is NetworkResult.Success -> {
                     isLoading(false)

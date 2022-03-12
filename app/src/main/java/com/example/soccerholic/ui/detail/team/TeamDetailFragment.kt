@@ -33,7 +33,7 @@ class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.frag
 
         if(searchViewModel.idSearchData.value == null)
             searchViewModel.searchTeamWithTeamId(args.teamId)
-        searchViewModel.idSearchData.observe(this) { result ->
+        searchViewModel.idSearchData.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is NetworkResult.Success -> {
                     setData(result.data!!.response[0])
@@ -51,7 +51,7 @@ class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.frag
 
         if(searchViewModel.squadSearchData.value == null)
             searchViewModel.searchSquadWithTeamId(args.teamId)
-        searchViewModel.squadSearchData.observe(this) { result ->
+        searchViewModel.squadSearchData.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is NetworkResult.Success -> {
                     squadAdapter.setData(result.data!!.response[0].players)
