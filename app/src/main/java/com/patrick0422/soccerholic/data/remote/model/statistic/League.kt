@@ -1,4 +1,4 @@
-package com.patrick0422.soccerholic.data.remote.model.temp
+package com.patrick0422.soccerholic.data.remote.model.statistic
 
 
 import com.google.gson.annotations.SerializedName

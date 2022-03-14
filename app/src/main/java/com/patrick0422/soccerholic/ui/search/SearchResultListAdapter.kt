@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.patrick0422.soccerholic.base.BaseDiffUtil
-import com.patrick0422.soccerholic.data.remote.model.TeamData
+import com.patrick0422.soccerholic.data.remote.response.TeamData
 import com.patrick0422.soccerholic.databinding.ItemSearchResultListBinding
 
 class SearchResultListAdapter : RecyclerView.Adapter<SearchResultListAdapter.SearchResultViewHolder>() {

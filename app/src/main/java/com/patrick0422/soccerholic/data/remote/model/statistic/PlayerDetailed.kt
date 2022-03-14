@@ -1,8 +1,7 @@
-package com.patrick0422.soccerholic.data.remote.model.temp
+package com.patrick0422.soccerholic.data.remote.model.statistic
 
 
 import com.google.gson.annotations.SerializedName
-import com.patrick0422.soccerholic.data.remote.model.temp.Birth
 
 data class PlayerDetailed(
     @SerializedName("id")

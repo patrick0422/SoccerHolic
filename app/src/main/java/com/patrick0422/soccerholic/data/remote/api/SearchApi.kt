@@ -1,9 +1,9 @@
 package com.patrick0422.soccerholic.data.remote.api
 
-import com.patrick0422.soccerholic.data.remote.model.DetailedPlayerData
+import com.patrick0422.soccerholic.data.remote.response.DetailedPlayerData
 import com.patrick0422.soccerholic.data.remote.response.SearchResponse
-import com.patrick0422.soccerholic.data.remote.model.SquadData
-import com.patrick0422.soccerholic.data.remote.model.TeamData
+import com.patrick0422.soccerholic.data.remote.response.SquadData
+import com.patrick0422.soccerholic.data.remote.response.TeamData
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
