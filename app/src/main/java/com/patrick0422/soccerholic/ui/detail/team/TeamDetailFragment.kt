@@ -29,7 +29,7 @@ class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.frag
 
         (requireActivity() as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        if(searchViewModel.idSearchData.value == null)
+        if(searchViewModel.idSearchData.value == null || searchViewModel.idSearchData.value!!.data!!.response[0].team.id != args.teamId)
             searchViewModel.searchTeamWithTeamId(args.teamId)
         searchViewModel.idSearchData.observe(viewLifecycleOwner) { result ->
             when (result) {
@@ -47,7 +47,7 @@ class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.frag
             }
         }
 
-        if(searchViewModel.squadSearchData.value == null)
+        if(searchViewModel.squadSearchData.value == null || searchViewModel.squadSearchData.value!!.data!!.response[0].team.id != args.teamId)
             searchViewModel.searchSquadWithTeamId(args.teamId)
         searchViewModel.squadSearchData.observe(viewLifecycleOwner) { result ->
             when (result) {
