@@ -1,4 +1,4 @@
-package com.patrick0422.soccerholic.data.remote
+package com.patrick0422.soccerholic.domain
 
 import com.patrick0422.soccerholic.data.remote.api.SearchApi
 import com.patrick0422.soccerholic.data.remote.response.DetailedPlayerData
@@ -18,4 +18,3 @@ class SearchRepository @Inject constructor(
 
     suspend fun searchPlayerByPlayerId(playerId: Int, season: Int): Response<SearchResponse<DetailedPlayerData>> = searchApi.searchPlayerByPlayerId(playerId, season)
 }
-

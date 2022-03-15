@@ -2,6 +2,8 @@ package com.patrick0422.soccerholic.ui.detail.team
 
 import android.os.Build
 import android.text.Html
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -95,5 +97,11 @@ class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.frag
             textError.visibility = View.GONE
             squadRecyclerView.visibility = View.VISIBLE
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.clear()
+        inflater.inflate(R.menu.menu_team_detail, menu)
     }
 }

@@ -54,4 +54,6 @@ class PlayerDetailFragment : BaseFragment<FragmentPlayerDetailBinding>(R.layout.
 
         statisticsListAdapter.setData(playerData.statistics)
     }
+
+
 }

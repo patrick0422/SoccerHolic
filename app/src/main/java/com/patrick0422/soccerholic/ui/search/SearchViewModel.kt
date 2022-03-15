@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.patrick0422.soccerholic.data.remote.SearchRepository
+import com.patrick0422.soccerholic.domain.SearchRepository
 import com.patrick0422.soccerholic.data.remote.response.DetailedPlayerData
 import com.patrick0422.soccerholic.data.remote.response.SearchResponse
 import com.patrick0422.soccerholic.data.remote.response.SquadData
