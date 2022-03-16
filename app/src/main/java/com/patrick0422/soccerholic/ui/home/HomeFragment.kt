@@ -50,7 +50,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.toolbar_search -> {
+            R.id.toolbar_goto_search -> {
                 findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
                 true
             }
