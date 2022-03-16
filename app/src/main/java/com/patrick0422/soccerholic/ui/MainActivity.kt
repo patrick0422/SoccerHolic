@@ -1,7 +1,5 @@
 package com.patrick0422.soccerholic.ui
 
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.navigation.findNavController
@@ -20,7 +18,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun init(): Unit = with(binding) {
         setSupportActionBar(toolbar)
 
-
+        mainViewModel.readTeamBookmark()
     }
 
     override fun onBackPressed() {

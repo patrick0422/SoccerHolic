@@ -2,8 +2,10 @@ package com.patrick0422.soccerholic.ui.detail.team
 
 import android.os.Build
 import android.text.Html
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -13,15 +15,19 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.patrick0422.soccerholic.R
 import com.patrick0422.soccerholic.base.BaseFragment
+import com.patrick0422.soccerholic.data.local.TeamBookmarkEntity
 import com.patrick0422.soccerholic.data.remote.response.TeamData
 import com.patrick0422.soccerholic.databinding.FragmentTeamDetailBinding
+import com.patrick0422.soccerholic.ui.MainViewModel
 import com.patrick0422.soccerholic.ui.search.SearchViewModel
+import com.patrick0422.soccerholic.util.Constants.TAG
 import com.patrick0422.soccerholic.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.fragment_team_detail) {
     private val args by navArgs<TeamDetailFragmentArgs>()
+    private val mainViewModel: MainViewModel by activityViewModels()
     private val searchViewModel: SearchViewModel by activityViewModels()
     private val squadAdapter = SquadAdapter()
 
@@ -46,6 +52,11 @@ class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.frag
                 is NetworkResult.Loading -> {
                     isLoading(true)
                 }
+            }
+
+            mainViewModel.teamBookmark.observe(viewLifecycleOwner) {
+                Log.d(TAG, it.size.toString())
+
             }
         }
 
@@ -103,5 +114,16 @@ class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.frag
         super.onCreateOptionsMenu(menu, inflater)
         menu.clear()
         inflater.inflate(R.menu.menu_team_detail, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId != R.id.toolbar_bookmark) {
+            super.onOptionsItemSelected(item)
+        }
+
+        mainViewModel.insert(TeamBookmarkEntity(searchViewModel.idSearchData.value?.data!!.response[0]))
+        item.icon = resources.getDrawable(R.drawable.ic_star_filled)
+
+        return true
     }
 }
