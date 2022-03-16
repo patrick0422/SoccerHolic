@@ -5,5 +5,6 @@
         android:id="@+id/toolbar_bookmark"
         android:title="@string/bookmark"
         android:icon="@drawable/ic_star_border"
+        android:iconTint="#FFC107"
         app:showAsAction="ifRoom"/>
 </menu>
