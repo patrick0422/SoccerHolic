@@ -10,13 +10,14 @@ import androidx.navigation.fragment.findNavController
 import com.patrick0422.soccerholic.R
 import com.patrick0422.soccerholic.base.BaseFragment
 import com.patrick0422.soccerholic.databinding.FragmentHomeBinding
+import com.patrick0422.soccerholic.ui.MainViewModel
 import com.patrick0422.soccerholic.ui.search.SearchViewModel
 import com.patrick0422.soccerholic.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
-    private val searchViewModel: SearchViewModel by activityViewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
     private val favoriteTeamAdapter = FavoriteTeamAdapter()
 
     override fun init() = with(binding) {
@@ -24,22 +25,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
         (requireActivity() as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
 
-        // Temporary code to test recyclerview
-        if (favoriteTeamAdapter.isListEmpty)
-            searchViewModel.searchTeamWithKeyWord("manchester")
-        searchViewModel.searchData.observe(viewLifecycleOwner) { result ->
-            when (result) {
-                is NetworkResult.Success -> {
-                    favoriteTeamAdapter.setData(result.data!!.response)
-                }
-                is NetworkResult.Error -> {
-                    makeToast(result.message!!)
-                }
-                is NetworkResult.Loading -> {
-                }
-            }
+        mainViewModel.readTeamBookmark.observe(viewLifecycleOwner) { result ->
+            favoriteTeamAdapter.setData(result.map { it.favoriteTeam })
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

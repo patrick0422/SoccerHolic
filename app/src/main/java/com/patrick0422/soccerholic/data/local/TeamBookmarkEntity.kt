@@ -9,6 +9,6 @@ import com.patrick0422.soccerholic.util.Constants
 class TeamBookmarkEntity(
     var favoriteTeam: TeamData
 ) {
-    @PrimaryKey(autoGenerate = false)
+    @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 }

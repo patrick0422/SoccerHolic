@@ -18,7 +18,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun init(): Unit = with(binding) {
         setSupportActionBar(toolbar)
 
-        mainViewModel.readTeamBookmark()
     }
 
     override fun onBackPressed() {
