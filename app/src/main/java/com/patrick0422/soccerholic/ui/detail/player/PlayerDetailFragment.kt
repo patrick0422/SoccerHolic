@@ -8,7 +8,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.patrick0422.soccerholic.R
 import com.patrick0422.soccerholic.base.BaseFragment
-import com.patrick0422.soccerholic.data.remote.model.DetailedPlayerData
+import com.patrick0422.soccerholic.data.remote.response.DetailedPlayerData
 import com.patrick0422.soccerholic.databinding.FragmentPlayerDetailBinding
 import com.patrick0422.soccerholic.ui.search.SearchViewModel
 import com.patrick0422.soccerholic.util.NetworkResult
@@ -54,4 +54,6 @@ class PlayerDetailFragment : BaseFragment<FragmentPlayerDetailBinding>(R.layout.
 
         statisticsListAdapter.setData(playerData.statistics)
     }
+
+
 }

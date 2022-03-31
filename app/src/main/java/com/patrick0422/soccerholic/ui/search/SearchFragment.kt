@@ -2,6 +2,8 @@ package com.patrick0422.soccerholic.ui.search
 
 import android.os.Build
 import android.text.Html
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.widget.SearchView
 import androidx.annotation.RequiresApi
@@ -19,13 +21,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
     override fun init() = with(binding) {
         searchResultList.adapter = resultListAdapter
-
-        searchView.maxWidth = Int.MAX_VALUE
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            @RequiresApi(Build.VERSION_CODES.N)
-            override fun onQueryTextSubmit(text: String?): Boolean = searchTeamWithKeyWord(text ?: "")
-            override fun onQueryTextChange(newText: String?): Boolean = true
-        })
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -95,5 +90,23 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         }
     }
 
-    fun isKeyWordValid(keyWord: String): Boolean = ((keyWord.matches(Regex("^[a-zA-Z0-9\\s]+\$"))))
+    private fun isKeyWordValid(keyWord: String): Boolean = ((keyWord.matches(Regex("^[a-zA-Z0-9\\s]+\$"))))
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        inflater.inflate(R.menu.menu_search, menu)
+
+        (menu.findItem(R.id.toolbar_search).actionView as SearchView).apply {
+            maxWidth = Int.MAX_VALUE
+            isIconifiedByDefault = false
+            queryHint = "팀 검색"
+            setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                @RequiresApi(Build.VERSION_CODES.N)
+                override fun onQueryTextSubmit(text: String?): Boolean = searchTeamWithKeyWord(text ?: "")
+                override fun onQueryTextChange(newText: String?): Boolean = true
+            })
+        }
+
+    }
 }

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.patrick0422.soccerholic.base.BaseDiffUtil
-import com.patrick0422.soccerholic.data.remote.model.temp.Statistic
+import com.patrick0422.soccerholic.data.remote.model.statistic.Statistic
 import com.patrick0422.soccerholic.databinding.ItemPlayerStatisticsBinding
 
 class StatisticsListAdapter: RecyclerView.Adapter<StatisticsListAdapter.StatisticsViewHolder>() {

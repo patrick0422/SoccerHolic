@@ -1,7 +1,7 @@
 package com.patrick0422.soccerholic.data.local
 
 import androidx.room.TypeConverter
-import com.patrick0422.soccerholic.data.remote.model.TeamData
+import com.patrick0422.soccerholic.data.remote.response.TeamData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
