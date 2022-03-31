@@ -30,6 +30,7 @@ class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.frag
     private val squadAdapter = SquadAdapter()
 
     private var isBookmarked = false
+    private var currentTeamBookmarkEntity: TeamBookmarkEntity? = null
 
     override fun init() {
         binding.squadRecyclerView.adapter = squadAdapter
@@ -66,12 +67,15 @@ class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.frag
 
     private fun checkBookmarkStatus(item: MenuItem) {
         mainViewModel.readTeamBookmark.observe(this) { result ->
-            val idList = result.map {
-                it.favoriteTeam.team.id
+
+            val idList = result.filter {
+                it.favoriteTeam.team.id == args.teamId
             }
 
-            if (idList.contains(args.teamId))
+            if (idList.isNotEmpty()) {
                 isBookmarked = true
+                currentTeamBookmarkEntity = idList[0]
+            }
 
             applyBookmarkStatus(item)
         }
@@ -119,13 +123,18 @@ class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.frag
     }
 
     private fun onBookmarkPressed(item: MenuItem) {
-        isBookmarked = if (isBookmarked) {
-            mainViewModel.deleteTeamBookmark(TeamBookmarkEntity(searchViewModel.idSearchData.value?.data!!.response[0]))
-            false
-        } else {
-            mainViewModel.insertTeamBookmark(TeamBookmarkEntity(searchViewModel.idSearchData.value?.data!!.response[0]))
-            true
-        }
+        isBookmarked =
+            if (isBookmarked) {
+                currentTeamBookmarkEntity?.let { mainViewModel.deleteTeamBookmark(it) }
+                false
+            } else {
+                searchViewModel.idSearchData.value?.data?.response?.let {
+                    mainViewModel.insertTeamBookmark(TeamBookmarkEntity(it[0]))
+                }
+                true
+            }
+
+        mainViewModel.readTeamBookmark
         applyBookmarkStatus(item)
         makeToast(isBookmarked.toString())
     }
