@@ -7,6 +7,7 @@ import android.view.MenuInflater
 import android.view.View
 import android.widget.SearchView
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import com.patrick0422.soccerholic.R
 import com.patrick0422.soccerholic.base.BaseFragment
@@ -21,6 +22,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
     override fun init() = with(binding) {
         searchResultList.adapter = resultListAdapter
+        (requireActivity() as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -94,7 +96,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-
+        menu.clear()
         inflater.inflate(R.menu.menu_search, menu)
 
         (menu.findItem(R.id.toolbar_search).actionView as SearchView).apply {
