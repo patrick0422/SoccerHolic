@@ -46,7 +46,7 @@ class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.frag
         searchViewModel.idSearchData.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is NetworkResult.Success -> {
-                    setData(result.data!!.response[0])
+                    setTeamData(result.data!!.response[0])
                     isLoading(false)
                 }
                 is NetworkResult.Error -> {
@@ -62,7 +62,22 @@ class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.frag
     }
 
     private fun getSquadData() {
-
+        searchViewModel.searchSquadWithTeamId(args.teamId)
+        searchViewModel.squadSearchData.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is NetworkResult.Success -> {
+                    squadAdapter.setData(result.data!!.response[0].players)
+                    isLoading(false)
+                }
+                is NetworkResult.Error -> {
+                    Log.d(TAG, "getTeamData: ${result.message}")
+                    isLoading(false)
+                }
+                is NetworkResult.Loading -> {
+                    isLoading(true)
+                }
+            }
+        }
     }
 
     private fun checkBookmarkStatus(item: MenuItem) {
@@ -82,7 +97,7 @@ class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.frag
     }
 
 
-    private fun setData(teamData: TeamData) = with(binding) {
+    private fun setTeamData(teamData: TeamData) = with(binding) {
         Glide
             .with(binding.root)
             .load(teamData.team.logo)
