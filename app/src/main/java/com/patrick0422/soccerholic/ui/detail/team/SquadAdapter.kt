@@ -48,7 +48,7 @@ class SquadAdapter : RecyclerView.Adapter<SquadAdapter.SquadViewHolder>() {
     override fun getItemCount(): Int = squad.size
 
     fun setData(newData: List<Player>) {
-        val playerListDiffUtil = BaseDiffUtil<Player>(squad, newData)
+        val playerListDiffUtil = BaseDiffUtil(squad, newData)
         val diffUtilResult = DiffUtil.calculateDiff(playerListDiffUtil)
 
         squad = newData

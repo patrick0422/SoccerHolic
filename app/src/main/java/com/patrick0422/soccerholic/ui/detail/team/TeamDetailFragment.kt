@@ -151,7 +151,6 @@ class TeamDetailFragment : BaseFragment<FragmentTeamDetailBinding>(R.layout.frag
 
         mainViewModel.readTeamBookmark
         applyBookmarkStatus(item)
-        makeToast(isBookmarked.toString())
     }
 
     private fun applyBookmarkStatus(item: MenuItem) {
