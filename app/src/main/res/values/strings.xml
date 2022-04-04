@@ -28,4 +28,6 @@
     <string name="goals">Goals</string>
     <string name="assists">Assists:</string>
     <string name="bookmark">Bookmark</string>
+    <string name="home">Home</string>
+    <string name="fixtures">Fixtures</string>
 </resources>

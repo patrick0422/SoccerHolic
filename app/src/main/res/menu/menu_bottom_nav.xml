@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/homeFragment"
+        android:title="@string/home"
+        android:icon="@drawable/ic_home"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/fixturesFragment"
+        android:title="@string/fixtures"
+        android:icon="@drawable/ic_calendar"
+        app:showAsAction="ifRoom"/>
+</menu>
