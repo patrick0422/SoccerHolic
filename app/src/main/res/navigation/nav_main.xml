@@ -53,4 +53,9 @@
             android:name="playerId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/fixturesFragment"
+        android:name="com.patrick0422.soccerholic.ui.FixturesFragment"
+        android:label="fragment_fixtures"
+        tools:layout="@layout/fragment_fixtures" />
 </navigation>
